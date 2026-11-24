@@ -1,0 +1,6 @@
+{
+  "name": "TimeWindow SaaS — ระบบแจ้งเตือนและควบคุมการยืนยันตัวตนตามช่วงเวลา",
+  "description": "Multi-Tenant Time-Window Task, Attendance & Community Board SaaS with strict cutoff controls, emergency 8888 unlock, daily reset, and Google Apps Script Single-File HTML export.",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
