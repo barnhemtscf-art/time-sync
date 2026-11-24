@@ -1574,8 +1574,8 @@ export default function App() {
               </section>
             </div>
 
-            {/* Middle Centered Card: Cloud Mascot perched on top + Shared File Drop Hub only */}
-            <div data-testid="middle-hub-container">
+            {/* Middle Centered Box Card: Cloud Mascot perched on top + Compact Shared File Drop Hub Box */}
+            <div data-testid="middle-hub-container" className="max-w-[480px] w-full mx-auto">
               <CloudMascot
                 visible={showMascot}
                 hasActiveTasks={activeTasksCount > 0}
@@ -1585,41 +1585,49 @@ export default function App() {
                 onOpenQa={() => setQaOpen((prev) => !prev)}
               />
 
-              <section className="tw-surface px-5 py-4 shadow-xs flex flex-wrap items-center justify-between gap-3">
-                <div className="flex items-center gap-3 min-w-0">
-                  <div className="w-9 h-9 tw-subtle border tw-border tw-control-sm flex items-center justify-center shrink-0">
+              <section className="tw-surface p-5 shadow-xs space-y-4">
+                <div className="flex items-start gap-3">
+                  <div className="w-10 h-10 tw-subtle border tw-border tw-control-sm flex items-center justify-center shrink-0">
                     <FolderUp className="w-4 h-4 text-[var(--text-secondary)]" />
                   </div>
-                  <div className="min-w-0">
-                    <div className="text-sm font-semibold truncate">
+                  <div className="min-w-0 space-y-1">
+                    <div className="text-sm font-semibold leading-snug">
                       {lang === 'th'
                         ? `จุดฝากไฟล์รวม · ${activeFileDropHub.customLocationTitle}`
                         : `File Drop Hub · ${activeFileDropHub.customLocationTitle}`}
                     </div>
-                    <div className="text-xs text-[var(--text-muted)] truncate">
-                      {lang === 'th'
-                        ? `ไม่ต้องเข้าบ่อย แค่แวะเข้ามาฝากไฟล์หรือข้อความรวมกันในจุดเดียว เก็บรายชิ้น 14 วัน · ${activeFileDropHub.submissions.length} รายการ`
-                        : `Drop files or messages in one temporary spot (14-day rolling retention) · ${activeFileDropHub.submissions.length} items`}
+                    <div className="text-xs text-[var(--text-muted)] leading-relaxed">
+                      {lang === 'th' ? (
+                        <>
+                          แวะเข้ามาฝากไฟล์ เอกสาร หรือข้อความรวมกันในจุดเดียว · เก็บรายชิ้น 14 วัน ·{' '}
+                          <span className="whitespace-nowrap">{activeFileDropHub.submissions.length} รายการ</span>
+                        </>
+                      ) : (
+                        <>
+                          Drop files, docs, or notes in one spot · 14-day rolling retention ·{' '}
+                          <span className="whitespace-nowrap">{activeFileDropHub.submissions.length} items</span>
+                        </>
+                      )}
                     </div>
                   </div>
                 </div>
 
-                <div className="flex flex-wrap items-center gap-2 shrink-0">
+                <div className="flex items-center gap-2">
                   <button
                     type="button"
                     onClick={() => {
                       setDropModeModalInitialSelected(true);
                       setShowDropModeModal(true);
                     }}
-                    className="px-3 py-2 text-xs font-medium tw-btn-ghost inline-flex items-center gap-1.5 whitespace-nowrap"
+                    className="px-3 py-2 text-xs font-medium tw-btn-ghost inline-flex items-center justify-center gap-1.5 whitespace-nowrap shrink-0"
                   >
                     <Settings2 className="w-3.5 h-3.5" />
-                    <span>{lang === 'th' ? 'เลือกโหมด / ตั้งค่า' : 'Choose Mode / Settings'}</span>
+                    <span>{lang === 'th' ? 'เลือกโหมด' : 'Select Mode'}</span>
                   </button>
                   <button
                     type="button"
                     onClick={() => setActiveHomeSection('file_drop')}
-                    className="px-3.5 py-2 text-xs font-semibold tw-btn-soft inline-flex items-center gap-1.5 whitespace-nowrap"
+                    className="flex-1 px-4 py-2 text-xs font-semibold tw-btn-soft inline-flex items-center justify-center gap-1.5 whitespace-nowrap"
                   >
                     <FolderUp className="w-3.5 h-3.5" />
                     <span>{lang === 'th' ? 'เปิดจุดฝากไฟล์รวม' : 'Open File Drop Hub'}</span>
